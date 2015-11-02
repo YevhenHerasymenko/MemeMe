@@ -29,6 +29,22 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillDisappear(animated)
         unsubscribeNotification()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName : -3.0
+        ]
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.textAlignment = NSTextAlignment.Center
+        bottomTextField.textAlignment = NSTextAlignment.Center
+        
+    }
 
     //MARK: - Notifications
     
@@ -66,6 +82,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func share(sender: UIBarButtonItem) {
         let image = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        controller.completionWithItemsHandler = {[unowned self]
+            (activity, success, items, error) in
+            _ = Meme(textTop: self.topTextField.text, textBottom: self.bottomTextField.text, image: self.imageView.image, memedImage: image)
+        }
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
@@ -81,6 +101,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         pickerController.delegate = self
         pickerController.sourceType = UIImagePickerControllerSourceType.Camera
         self.presentViewController(pickerController, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        self.imageView.image = nil
+        self.topTextField.text = "TOP"
+        self.bottomTextField.text = "BOTTOM"
     }
     
     // MARK: - Image Picker Delegate
@@ -101,6 +127,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == topTextField {
+            if textField.text == "TOP" {
+                textField.text = ""
+            }
+        } else if textField == bottomTextField {
+            if textField.text == "BOTTOM" {
+                textField.text = ""
+            }
+        }
     }
     
     // MARK: - Keyboard
