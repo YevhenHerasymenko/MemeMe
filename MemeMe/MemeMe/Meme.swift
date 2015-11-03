@@ -8,19 +8,11 @@
 
 import UIKit
 
-class Meme: NSObject {
+struct Meme {
 
     var image : UIImage!
     var memedImage: UIImage!
     var textTop: NSString!
     var textBottom: NSString!
-    
-    init(textTop: NSString!, textBottom: NSString!, image: UIImage!, memedImage: UIImage!) {
-        super.init()
-        self.image = image
-        self.memedImage = memedImage
-        self.textTop = textTop
-        self.textBottom = textBottom
-    }
     
 }

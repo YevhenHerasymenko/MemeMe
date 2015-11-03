@@ -62,17 +62,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() -> UIImage {
         
-        self.navigationController?.navigationBarHidden = true
+        navigationController?.navigationBarHidden = true
         toolbar.hidden = true
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame,
+        view.drawViewHierarchyInRect(self.view.frame,
             afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.navigationController?.navigationBarHidden = false
+        navigationController?.navigationBarHidden = false
         toolbar.hidden = false
         return memedImage
     }
@@ -82,9 +82,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func share(sender: UIBarButtonItem) {
         let image = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        controller.completionWithItemsHandler = {[unowned self]
+        controller.completionWithItemsHandler = {
             (activity, success, items, error) in
-            _ = Meme(textTop: self.topTextField.text, textBottom: self.bottomTextField.text, image: self.imageView.image, memedImage: image)
+            
+            _ = Meme(image: self.imageView.image, memedImage: image, textTop: self.topTextField.text, textBottom: self.bottomTextField.text)
         }
         self.presentViewController(controller, animated: true, completion: nil)
     }
@@ -144,10 +145,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: - Keyboard
     
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y = -getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
+    
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+        if bottomTextField.isFirstResponder() {
+            var frame: CGRect = view.frame
+            frame.origin.y = 0
+            view.frame = frame
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
