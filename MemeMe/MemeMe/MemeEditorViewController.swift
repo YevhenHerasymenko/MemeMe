@@ -65,8 +65,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         navigationController?.navigationBarHidden = true
         toolbar.hidden = true
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawViewHierarchyInRect(self.view.frame,
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame,
             afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
@@ -87,40 +87,40 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             
             _ = Meme(image: self.imageView.image, memedImage: image, textTop: self.topTextField.text, textBottom: self.bottomTextField.text)
         }
-        self.presentViewController(controller, animated: true, completion: nil)
+        presentViewController(controller, animated: true, completion: nil)
     }
     
     @IBAction func pickUpImageFromAlbum(sender: UIBarButtonItem) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(pickerController, animated: true, completion: nil)
+        presentViewController(pickerController, animated: true, completion: nil)
     }
     
     @IBAction func pickUpImageFromCamera(sender: UIBarButtonItem) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(pickerController, animated: true, completion: nil)
+        presentViewController(pickerController, animated: true, completion: nil)
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        self.imageView.image = nil
-        self.topTextField.text = "TOP"
-        self.bottomTextField.text = "BOTTOM"
+        imageView.image = nil
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
     }
     
     // MARK: - Image Picker Delegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            self.imageView.image = image
+            imageView.image = image
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - TextFieldDelegate
@@ -146,7 +146,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y = -getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     
