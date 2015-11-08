@@ -19,6 +19,7 @@
 		C4F9FD6D1BEF8CF000AA437A /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD681BEF8CF000AA437A /* Meme.swift */; };
 		C4F9FD6F1BEF8D0B00AA437A /* SentMemesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD6E1BEF8D0B00AA437A /* SentMemesTableViewCell.swift */; };
 		C4F9FD711BEF8D2F00AA437A /* SentMemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD701BEF8D2F00AA437A /* SentMemesCollectionViewCell.swift */; };
+		C4F9FD731BEF976C00AA437A /* MemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD721BEF976C00AA437A /* MemeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C4F9FD681BEF8CF000AA437A /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		C4F9FD6E1BEF8D0B00AA437A /* SentMemesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewCell.swift; sourceTree = "<group>"; };
 		C4F9FD701BEF8D2F00AA437A /* SentMemesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesCollectionViewCell.swift; sourceTree = "<group>"; };
+		C4F9FD721BEF976C00AA437A /* MemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				C4F9FD641BEF8CF000AA437A /* MemeEditorViewController.swift */,
 				C4F9FD651BEF8CF000AA437A /* SentMemesCollectionViewController.swift */,
 				C4F9FD661BEF8CF000AA437A /* SentMemesTableViewController.swift */,
+				C4F9FD721BEF976C00AA437A /* MemeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				C4F9FD6C1BEF8CF000AA437A /* SentMemesTableViewController.swift in Sources */,
 				C4F9FD6A1BEF8CF000AA437A /* MemeEditorViewController.swift in Sources */,
 				C4F9FD6B1BEF8CF000AA437A /* SentMemesCollectionViewController.swift in Sources */,
+				C4F9FD731BEF976C00AA437A /* MemeViewController.swift in Sources */,
 				C4F9FD6D1BEF8CF000AA437A /* Meme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

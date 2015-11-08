@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="358" y="-298"/>
         </scene>
-        <!--View Controller-->
+        <!--Meme View Controller-->
         <scene sceneID="Zwb-Bl-hV4">
             <objects>
-                <viewController id="NwK-Xn-dRn" sceneMemberID="viewController">
+                <viewController id="NwK-Xn-dRn" customClass="MemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q1o-0A-XOq"/>
                         <viewControllerLayoutGuide type="bottom" id="LZ8-nw-wJK"/>
@@ -172,12 +172,15 @@
                             <constraint firstAttribute="trailing" secondItem="Eco-6T-isS" secondAttribute="trailing" id="zew-PG-Ixl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memeImageView" destination="Eco-6T-isS" id="idm-8E-Aw2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o66-6a-krc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834" y="-1018"/>
         </scene>
-        <!--Sent Memes Collection View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="70m-Zl-5Dc">
             <objects>
                 <viewController id="Yn6-Op-a7p" customClass="SentMemesCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -222,7 +225,7 @@
                             <constraint firstItem="qUR-GN-P1Q" firstAttribute="leading" secondItem="rpt-Aj-NWR" secondAttribute="leading" id="gKp-qm-jKS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zf3-6U-NSn">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="zf3-6U-NSn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="M71-TE-JRe">
                             <connections>
                                 <segue destination="D1j-wv-Lcw" kind="presentation" id="FmB-ju-Hpz"/>
@@ -231,7 +234,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="qUR-GN-P1Q" id="pmA-w0-a2w"/>
-                        <segue destination="NwK-Xn-dRn" kind="show" id="vxo-pY-6Sg"/>
+                        <segue destination="NwK-Xn-dRn" kind="show" identifier="collectionViewToMemeSegue" id="vxo-pY-6Sg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3c-hN-L5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,7 +259,7 @@
             </objects>
             <point key="canvasLocation" x="358" y="-1018"/>
         </scene>
-        <!--Sent Memes Table View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="D2o-sO-qpr">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Itc-6u-QFB" customClass="SentMemesTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -327,7 +330,7 @@
                             <constraint firstItem="nnC-Fh-KGf" firstAttribute="top" secondItem="gms-bl-JNP" secondAttribute="bottom" id="rsg-5I-McF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1SR-9G-4ko">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="1SR-9G-4ko">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uyk-2P-aBn">
                             <connections>
                                 <segue destination="D1j-wv-Lcw" kind="presentation" id="GuE-dU-YlX"/>
@@ -336,7 +339,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="gms-bl-JNP" id="UZa-s6-XZZ"/>
-                        <segue destination="NwK-Xn-dRn" kind="show" id="G4b-Xw-62i"/>
+                        <segue destination="NwK-Xn-dRn" kind="show" identifier="tableViewToMemeSegue" id="G4b-Xw-62i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTk-UZ-7hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -385,7 +388,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GuE-dU-YlX"/>
-        <segue reference="G4b-Xw-62i"/>
+        <segue reference="FmB-ju-Hpz"/>
+        <segue reference="vxo-pY-6Sg"/>
     </inferredMetricsTieBreakers>
 </document>

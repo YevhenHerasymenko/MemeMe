@@ -8,9 +8,13 @@
 
 import UIKit
 
+let segueConstant = "tableViewToMemeSegue"
+
 class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var indexSelectedMeme: Int!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +38,17 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
     //MARK: Table View Delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        indexSelectedMeme = indexPath.row
+        self.performSegueWithIdentifier(segueConstant, sender: self)
+    }
+    
+    //MARK: Segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == segueConstant {
+            let memeController: MemeViewController = segue.destinationViewController as! MemeViewController
+            memeController.meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexSelectedMeme]
+        }
     }
 
 }
