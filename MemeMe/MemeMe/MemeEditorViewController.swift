@@ -87,6 +87,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: Actions
@@ -116,9 +117,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        imageView.image = nil
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Image Picker Delegate
