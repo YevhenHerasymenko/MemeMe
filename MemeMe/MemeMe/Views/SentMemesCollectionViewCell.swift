@@ -9,5 +9,11 @@
 import UIKit
 
 class SentMemesCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var memeImage: UIImageView!
+    
+    func config(meme: Meme) {
+        memeImage.image = meme.memedImage
+    }
 
 }
