@@ -87,7 +87,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: Actions
