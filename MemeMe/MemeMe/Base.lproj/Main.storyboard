@@ -176,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="1834" y="-1018"/>
         </scene>
-        <!--View Controller-->
+        <!--Sent Memes Collection View Controller-->
         <scene sceneID="70m-Zl-5Dc">
             <objects>
-                <viewController id="Yn6-Op-a7p" sceneMemberID="viewController">
+                <viewController id="Yn6-Op-a7p" customClass="SentMemesCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1uP-yS-Iwb"/>
                         <viewControllerLayoutGuide type="bottom" id="2sV-8Y-xVq"/>
@@ -198,7 +198,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HxH-3f-bBo">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sentMemesCell" id="HxH-3f-bBo">
                                         <rect key="frame" x="0.0" y="64" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -229,6 +229,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="qUR-GN-P1Q" id="pmA-w0-a2w"/>
                         <segue destination="NwK-Xn-dRn" kind="show" id="vxo-pY-6Sg"/>
                     </connections>
                 </viewController>
@@ -254,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="358" y="-1018"/>
         </scene>
-        <!--View Controller-->
+        <!--Sent Memes Table View Controller-->
         <scene sceneID="D2o-sO-qpr">
             <objects>
-                <viewController id="Itc-6u-QFB" sceneMemberID="viewController">
+                <viewController id="Itc-6u-QFB" customClass="SentMemesTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4HJ-a9-Zwb"/>
                         <viewControllerLayoutGuide type="bottom" id="nnC-Fh-KGf"/>
@@ -270,6 +271,18 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sentMemesCell" id="kLC-YR-PM1" customClass="SentMemesTableViewCell" customModule="MemeMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kLC-YR-PM1" id="Sf0-Xv-dT0">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <animations/>
@@ -289,6 +302,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="gms-bl-JNP" id="UZa-s6-XZZ"/>
                         <segue destination="NwK-Xn-dRn" kind="show" id="G4b-Xw-62i"/>
                     </connections>
                 </viewController>
@@ -338,7 +352,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GuE-dU-YlX"/>
         <segue reference="G4b-Xw-62i"/>
+        <segue reference="GuE-dU-YlX"/>
     </inferredMetricsTieBreakers>
 </document>
