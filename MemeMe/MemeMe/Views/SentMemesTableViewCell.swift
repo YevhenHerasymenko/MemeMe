@@ -9,5 +9,13 @@
 import UIKit
 
 class SentMemesTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var memeImage: UIImageView!
+    @IBOutlet weak var mameTextLabel: UILabel!
+    
+    func config(meme: Meme) {
+        memeImage.image = meme.memedImage
+        mameTextLabel.text = meme.textTop + " " + meme.textBottom
+    }
 
 }

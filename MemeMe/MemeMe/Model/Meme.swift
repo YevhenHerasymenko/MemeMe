@@ -12,7 +12,7 @@ struct Meme {
 
     var image : UIImage!
     var memedImage: UIImage!
-    var textTop: NSString!
-    var textBottom: NSString!
+    var textTop: String!
+    var textBottom: String!
     
 }
