@@ -60,6 +60,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             UIKeyboardWillHideNotification, object: nil)
     }
     
+    //MARK: Memed Image
+    
     func generateMemedImage() -> UIImage {
         
         navigationController?.navigationBarHidden = true
@@ -77,6 +79,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return memedImage
     }
     
+    func save(memedImage: UIImage) {
+        //Create the meme
+        let meme = Meme(image: imageView.image, memedImage: memedImage, textTop: topTextField.text, textBottom: bottomTextField.text)
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+    }
+    
     //MARK: Actions
     
     @IBAction func share(sender: UIBarButtonItem) {
@@ -84,8 +96,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         controller.completionWithItemsHandler = {
             (activity, success, items, error) in
-            
-            _ = Meme(image: self.imageView.image, memedImage: image, textTop: self.topTextField.text, textBottom: self.bottomTextField.text)
+            self.save(image)
         }
         presentViewController(controller, animated: true, completion: nil)
     }
